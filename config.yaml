@@ -1,0 +1,26 @@
+singleuser:
+    image:
+        name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyter/datascience-notebook
+        tag: latest
+    networkTools:
+        image:
+            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-network-tools
+
+hub:
+    image:
+        name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-hub
+        
+proxy:
+    chp:
+        image:
+            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/configurable-http-proxy
+            tag: 4.4.0
+            
+prePuller:
+    hook:
+        image:
+            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-image-awaiter
+            
+scheduling:
+    userScheduler:
+        enabled: false
