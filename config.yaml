@@ -1,26 +1,57 @@
 singleuser:
+  image:
+    name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyter/datascience-notebook
+    tag: latest
+  networkTools:
     image:
-        name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyter/datascience-notebook
-        tag: latest
-    networkTools:
-        image:
-            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-network-tools
-
+      name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-network-tools
+  networkPolicy:
+    enabled: false
 hub:
     image:
         name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-hub
-        
+#        for github
+#    config:
+#        Authenticator:
+#            admin_users:
+#                - keimmanthan
+#        GitHubOAuthenticator:
+#          client_id: 621ba2aa39fb280a106e
+#          client_secret: a258f5c5d6e2ccc2d1750f35e24140f1205ccb28
+#          oauth_callback_url: https://ironhub.live/hub/oauth_callback
+#        JupyterHub:
+#          authenticator_class: github
+    config:
+        Authenticator:
+            admin_users:
+                - keimmanthan
+                - manthankeim7@gmail.com
+        GoogleOAuthenticator:
+          client_id: 562187828196-fpp48vifsenmb8epbda8okm75hujh4u7.apps.googleusercontent.com
+          client_secret: t8b2DSw2lRMn6ewlM6j8XDUK
+          oauth_callback_url: https://ironhub.live/hub/oauth_callback
+        JupyterHub:
+          authenticator_class: google
+      
+      
 proxy:
-    chp:
-        image:
-            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/configurable-http-proxy
-            tag: 4.4.0
-            
+  chp:
+    image:
+      name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/configurable-http-proxy
+  https:
+    enabled: true
+    hosts:
+      - ironhub.live
+    letsencrypt:
+      contactEmail: keimm@purdue.edu
+  service:
+    loadBalancerIP: 128.211.160.104
+
 prePuller:
-    hook:
-        image:
-            name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-image-awaiter
-            
+  hook:
+    image:
+      name: geddes-registry.rcac.purdue.edu/docker-hub-cache/jupyterhub/k8s-image-awaiter
 scheduling:
-    userScheduler:
-        enabled: false
+  userScheduler:
+    enabled: false
+
