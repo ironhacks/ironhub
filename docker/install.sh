@@ -24,16 +24,6 @@ python3 -m pip install google.cloud google.oauth2 google-cloud-storage nbdime ju
 python3 -m pip install google-cloud-bigquery
 python3 -m pip install simpy
 
-echo -e "INSTALLING JUPYTER HUB R PACAKGES\n\n"
-
-
-_rinstall devtools
-_rinstall DBI
-_rinstall STAT
-_rinstall htmlwidgets
-_rinstall ggplot
-_rinstall ggvis
-_rinstall plotly
 
 echo "devtools::install_github(\"r-dbi/bigrquery\")" | R --no-save
 
@@ -43,7 +33,6 @@ echo -e "INSTALLING JUPYTER LAB EXTENSION\n\n"
 #jupyter labextension install @jupyterlab/github
 
 jupyter labextension install jupyterlab-plotly
-jupyter-labextension uninstall @jupyterlab/extensionmanager-extension
 
 echo -e "\n\nREBUILDING JUPYTER LAB INSTANCE"
 
