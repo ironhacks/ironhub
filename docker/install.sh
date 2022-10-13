@@ -33,6 +33,7 @@ echo -e "INSTALLING JUPYTER LAB EXTENSION\n\n"
 #jupyter labextension install @jupyterlab/github
 
 jupyter labextension install jupyterlab-plotly
+jupyter-labextension uninstall @jupyterlab/extensionmanager-extension
 
 echo -e "\n\nREBUILDING JUPYTER LAB INSTANCE"
 
