@@ -1,5 +1,5 @@
 #!/bin/bash
 
-wget https://github.com/jupyterhub/jupyterhub/archive/1.1.0.tar.gz
+wget https://github.com/jupyterhub/jupyterhub/archive/2.3.0.tar.gz
 
-mv 1.1.0.tar.gz ./master-v1.1.0.tar.gz
+mv 2.3.0.tar.gz ./master.tar.gz
